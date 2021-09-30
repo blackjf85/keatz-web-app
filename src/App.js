@@ -1,7 +1,10 @@
+import Register from "./components/Register";
+
 function App() {
   return (
     <div className="App">
-      <h1>create-react-app scaffolding</h1>
+      <h1>Keatz App</h1>
+      <Register />
     </div>
   );
 }
