@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 const Register = () => {
   const [registerForm, setRegisterForm] = useState({
@@ -17,51 +18,101 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <form id="register">
-        <label htmlFor="firstname">First Name</label>
-        <input
+    <StyledForm id="register">
+      <FormDiv className="form-container">
+        <StyledLabel htmlFor="firstname" classNamee="form-label">
+          First Name
+        </StyledLabel>
+        <StyledInput
           type="text"
           id="firstname"
           onChange={(event) => onChange(event)}
           name="firstname"
           value={registerForm.firstname}
         />
-        <label htmlFor="lastname">Last Name</label>
-        <input
+        <StyledLabel htmlFor="lastname" classNamee="form-label">
+          Last Name
+        </StyledLabel>
+        <StyledInput
           type="text"
           id="lastname"
           onChange={(event) => onChange(event)}
           name="lastname"
           value={registerForm.lastname}
         />
-        <label htmlFor="email">Email</label>
-        <input
+        <StyledLabel htmlFor="email" classNamee="form-label">
+          Email
+        </StyledLabel>
+        <StyledInput
           type="email"
           id="email"
           onChange={(event) => onChange(event)}
           name="email"
           value={registerForm.email}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <StyledLabel htmlFor="password" classNamee="form-label">
+          Password
+        </StyledLabel>
+        <StyledInput
           type="password"
           id="password"
           onChange={(event) => onChange(event)}
           name="password"
           value={registerForm.password}
         />
-        <button type="submit" id="submit">
+        <StyledButton type="submit" id="submit">
           Register Now
-        </button>
-      </form>
-      <h2>
-        {registerForm.firstname} {registerForm.lastname}
-      </h2>
-      <p>{registerForm.email}</p>
-      <p>{registerForm.password}</p>
-    </div>
+        </StyledButton>
+      </FormDiv>
+    </StyledForm>
   );
 };
+
+const StyledForm = styled.form`
+  width: 100vw;
+  height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FormDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 15px;
+  padding-bottom: 0px;
+  border: 2px solid orangered;
+`;
+
+const StyledLabel = styled.label`
+  margin-bottom: 10px;
+
+  font-weight: bold;
+  color: orangered;
+`;
+
+const StyledInput = styled.input`
+  margin-bottom: 10px;
+  border: 1px solid orangered;
+  color: orangered;
+`;
+
+const StyledButton = styled.button`
+  background-color: orangered;
+  color: white;
+  border: 2px solid orangered;
+  padding: 5px;
+  width: 117%;
+
+  :hover {
+    font-weight: bold;
+    cursor: pointer;
+  }
+`;
 
 export default Register;
