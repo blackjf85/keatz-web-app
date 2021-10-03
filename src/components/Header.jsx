@@ -29,7 +29,12 @@ const NavLink = styled(Link)`
   background-color: orangered;
   color: white;
 
+  border: 1px solid white;
+  margin-left: 15px;
+  padding: 10px;
+
   :hover {
+    border: 1px solid black;
     background-color: white;
     color: orangered;
   }
@@ -54,13 +59,8 @@ const StyledUl = styled.ul`
 `;
 
 const StyledLi = styled.li`
-  margin: 5%;
-  padding: 5px;
-
   :hover {
     cursor: pointer;
-    background-color: white;
-    color: orangered;
   }
 `;
 
