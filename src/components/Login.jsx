@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -42,6 +43,11 @@ const Login = () => {
           Register Now
         </StyledButton>
       </FormDiv>
+      <div>
+        <p>
+          Need an account? <Link to="/register">Sign up now</Link>
+        </p>
+      </div>
     </StyledForm>
   );
 };
