@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const Register = () => {
   const [registerForm, setRegisterForm] = useState({
     firstname: "",
@@ -10,6 +12,7 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [register, setRegister] = useState(false);
 
   const onChange = (e) => {
     setRegisterForm({
@@ -17,6 +20,29 @@ const Register = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setRegister(true);
+  };
+
+  useEffect(() => {
+    if (register === true) {
+      axios
+        .post(`${BASE_URL}/v1/auth/register`, {
+          firstname: registerForm.firstname,
+          lastname: registerForm.lastname,
+          email: registerForm.email,
+          password: registerForm.password,
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error));
+
+      setRegister(false);
+    }
+  }, [register, registerForm]);
 
   return (
     <StyledForm id="register">
@@ -61,7 +87,7 @@ const Register = () => {
           name="password"
           value={registerForm.password}
         />
-        <StyledButton type="submit" id="submit">
+        <StyledButton type="submit" id="submit" onClick={onSubmit}>
           Register Now
         </StyledButton>
       </FormDiv>
